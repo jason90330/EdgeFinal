@@ -1,3 +1,5 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"]  =  "TRUE"
 import cv2
 import torch
 import numpy as np
@@ -206,6 +208,13 @@ class DemoUtils():
 
     def recognizeEmotion(self, roiFaces):
         probs = self.detector.predict(roiFaces)
+        # probs[:,0] += 0.15 #Neutral
+        # probs[:,1] += 0.1 #Happy
+        # probs[:,2] += 0.15 #Sad
+        # probs[:,3] -= 0.3 #Surprise
+        # probs[:,4] -= 0.35 #Fear
+        # probs[:,5] += 0.2 #Disgust
+        # probs[:,6] += 0.1 #Angry
         emo_idx = np.argmax(probs,axis=1)
         emotions = [self.AffectName[int(key)] for key in emo_idx]
         return emotions,probs
@@ -235,7 +244,7 @@ class DemoUtils():
                             } , ignore_index=True)
         return df
 
-    def draw_faces_and_emotion(self, im, bboxes, emotions):
+    def draw_faces_and_emotion(self, im, bboxes, emotions, probs):
         output = im.copy()
         font = cv2.FONT_HERSHEY_DUPLEX
         alpha = 0.5
@@ -260,12 +269,13 @@ class DemoUtils():
             # im = cv2.rectangle(im, (x0, y1+15), (x0+len(name)*13, y1+45), (42, 219, 151), cv2.FILLED)
             # im = cv2.putText(im, name, (x0, y0+140), font, 1, (255,255,255), 1)    
         cv2.addWeighted(im, alpha, output, 1 - alpha, 0, output)
-        for bbox, emotion in zip(bboxes, emotions):
+        for bbox, emotion, prob in zip(bboxes, emotions, probs):
             # face roi
             x0, y0, x1, y1 = [int(_) for _ in bbox]
             output = cv2.rectangle(output, (x0, y0), (x1, y1), color_code[emotion], 2)
             x0, y0, x1, y1 = [int(_) for _ in bbox]
-            output = cv2.putText(output, emotion, (x0-20, y0-5), font, 1, color_code[emotion], 1, cv2.LINE_AA)
+            emo_idx = np.argmax(prob)
+            output = cv2.putText(output, emotion+" : "+ str(prob[emo_idx]), (x0-20, y0-5), font, 1, color_code[emotion], 1, cv2.LINE_AA)
             # output = cv2.putText(output, name, (x0, y1+40), font, 0.7, (255,255,255), 1, cv2.LINE_AA)    
 
         return output

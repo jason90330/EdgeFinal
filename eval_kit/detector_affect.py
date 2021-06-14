@@ -15,7 +15,8 @@ import os
 import sys
 sys.path.append('../')
 import config
-
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"]  =  "TRUE"
 
 class EmotionDetector():
     def __init__(self, modelIdx=0, fromPath=None):

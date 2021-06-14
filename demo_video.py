@@ -6,6 +6,8 @@ import torchvision
 import time
 from util.demo_utils import DemoUtils
 from retina_face import config
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"]  =  "TRUE"
 
 if __name__ == '__main__':
     retina_utils = DemoUtils()    
