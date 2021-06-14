@@ -9,8 +9,6 @@ from models.retinaNet import MobileNetV1 as MobileNetV1
 from models.retinaNet import FPN as FPN
 from models.retinaNet import SSH as SSH
 
-
-
 class ClassHead(nn.Module):
     def __init__(self,inchannels=512,num_anchors=3):
         super(ClassHead,self).__init__()
