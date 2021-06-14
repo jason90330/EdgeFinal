@@ -21,6 +21,7 @@ if __name__ == '__main__':
     fps    = cap.get(cv2.CAP_PROP_FPS)
     # Drop the input path with ".mp4"
     out_filename = config.VPATH[:-4]
+    isIrVideo = "ir" in config.VPATH
     # initialize mp4 writer
     fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 
@@ -50,7 +51,7 @@ if __name__ == '__main__':
         if ret:
             roiFaces,facialPoints,box_coords = retina_utils.Preprocess(frame)
 
-            emotions, probs = retina_utils.recognizeEmotion(roiFaces)            
+            emotions, probs = retina_utils.recognizeEmotion(roiFaces,irOffset=isIrVideo)            
 
             df = retina_utils._write_row(df, cnt, box_coords, emotions, probs)
 

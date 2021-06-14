@@ -29,9 +29,10 @@ if __name__ == '__main__':
             rgb_small_frame = small_frame[:, :, ::-1]
             roiFaces,facialPoints,box_coords = retina_utils.Preprocess(frame)
             if len(roiFaces)>0:
-                probs = retina_utils.detector.predict(roiFaces)
-                emo_idx = np.argmax(probs,axis=1)
-                emotions = [retina_utils.AffectName[int(key)] for key in emo_idx]
+                emotions, probs = retina_utils.recognizeEmotion(roiFaces)
+                # probs = retina_utils.detector.predict(roiFaces)
+                # emo_idx = np.argmax(probs,axis=1)
+                # emotions = [retina_utils.AffectName[int(key)] for key in emo_idx]
 
         frame = retina_utils.draw_faces_and_emotion(frame, box_coords, emotions, probs)
         cv2.imshow('frame', frame)

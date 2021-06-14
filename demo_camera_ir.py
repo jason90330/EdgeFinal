@@ -109,7 +109,7 @@ class InfraRedRuntime(object):
                     roiFaces,facialPoints,box_coords = self.retina_utils.Preprocess(ir_frame)
                     # result = self.draw_box(ir_frame, box_coords)
                     if len(roiFaces)>0:
-                        emotions, probs = self.retina_utils.recognizeEmotion(roiFaces)    
+                        emotions, probs = self.retina_utils.recognizeEmotion(roiFaces, irOffset=True)    
                         # result = ir_frame
                         result = self.retina_utils.draw_faces_and_emotion(ir_frame, box_coords, emotions, probs)
                 except:

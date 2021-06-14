@@ -206,15 +206,16 @@ class DemoUtils():
             # cv2.imwrite(str(idx)+".jpg", alignedImg)
         return alignedImgs,facialPoints,box_coords
 
-    def recognizeEmotion(self, roiFaces):
+    def recognizeEmotion(self, roiFaces, irOffset=False):
         probs = self.detector.predict(roiFaces)
-        # probs[:,0] += 0.15 #Neutral
-        # probs[:,1] += 0.1 #Happy
-        # probs[:,2] += 0.15 #Sad
-        # probs[:,3] -= 0.3 #Surprise
-        # probs[:,4] -= 0.35 #Fear
-        # probs[:,5] += 0.2 #Disgust
-        # probs[:,6] += 0.1 #Angry
+        if irOffset:
+            probs[:,0] += 0.15 #Neutral
+            probs[:,1] += 0.1 #Happy
+            probs[:,2] += 0.15 #Sad
+            probs[:,3] -= 0.3 #Surprise
+            probs[:,4] -= 0.35 #Fear
+            probs[:,5] += 0.2 #Disgust
+            probs[:,6] += 0.05 #Angry
         emo_idx = np.argmax(probs,axis=1)
         emotions = [self.AffectName[int(key)] for key in emo_idx]
         return emotions,probs
