@@ -202,7 +202,7 @@ def main():
                         _, predicted = torch.max(output.data, 1)
                         total += target.size(0)
                         correct += (predicted == target).cpu().sum()
-                    print('测试分类准确率为：%.3f%%' % (100. * float(correct) / float(total)))
+                    print('測試分類準確度：%.3f%%' % (100. * float(correct) / float(total)))
                     acc = 100. * float(correct) / float(total)
                     scheduler.step(acc)                                     
 
