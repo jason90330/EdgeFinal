@@ -42,7 +42,10 @@ cfg_re50 = {
 
 # Emotion
 RUNING_FPS = 4
-VPATH = "data/video_ir/0603_laught.mp4"
+# VPATH = "data/video_ir/0603_laught.mp4"
+# VPATH = "data/video_ir/0603_disgust.mp4"
+# VPATH = "data/video_ir/ir_0312_out_20210603_celeb_ir_baseline_from_0602_60k_baseline.mp4"
+VPATH = "data/video_first_order/FO_jiunda_happy_absolute_2.mp4"
 GUI_MODE = True
 CPU = False
 RESIZE_SCALE = 0.5

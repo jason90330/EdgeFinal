@@ -9,6 +9,7 @@ class MyEfficientNet(nn.Module):
 
         # EfficientNet
         self.network = EfficientNet.from_pretrained("efficientnet-b0")
+        # self.network.set_swish(memory_efficient=False)
         
         # Replace last layer
         self.network._fc = nn.Sequential(nn.Linear(self.network._fc.in_features, 512), 

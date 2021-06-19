@@ -51,12 +51,12 @@ if __name__ == '__main__':
         if ret:
             roiFaces,facialPoints,box_coords = retina_utils.Preprocess(frame)
 
-            emotions, probs = retina_utils.recognizeEmotion(roiFaces,irOffset=isIrVideo)            
-
-            df = retina_utils._write_row(df, cnt, box_coords, emotions, probs)
+            if len(roiFaces)>0:
+                emotions, probs = retina_utils.recognizeEmotion(roiFaces,irOffset=isIrVideo)            
+                df = retina_utils._write_row(df, cnt, box_coords, emotions, probs)
 
             # Draw bounding box for visiualization
-            frame = retina_utils.draw_faces_and_emotion(frame, box_coords, emotions)
+            frame = retina_utils.draw_faces_and_emotion(frame, box_coords, emotions, probs)
             output_movie.write(frame)
             if config.GUI_MODE:
                 cv2.imshow('frame', frame)

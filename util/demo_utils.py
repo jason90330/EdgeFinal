@@ -209,10 +209,17 @@ class DemoUtils():
     def recognizeEmotion(self, roiFaces, irOffset=False):
         probs = self.detector.predict(roiFaces)
         if irOffset:
-            probs[:,0] += 0.15 #Neutral
-            probs[:,1] += 0.1 #Happy
-            probs[:,2] += 0.15 #Sad
-            probs[:,3] -= 0.3 #Surprise
+            # probs[:,0] += 0.15 #Neutral
+            # probs[:,1] += 0.1 #Happy
+            # probs[:,2] += 0.15 #Sad
+            # probs[:,3] -= 0.3 #Surprise
+            # probs[:,4] -= 0.35 #Fear
+            # probs[:,5] += 0.2 #Disgust
+            # probs[:,6] += 0.05 #Angry
+            probs[:,0] += 0.2 #Neutral
+            probs[:,1] += 0.15 #Happy
+            # probs[:,2] += 0.15 #Sad
+            probs[:,3] -= 0.25 #Surprise
             probs[:,4] -= 0.35 #Fear
             probs[:,5] += 0.2 #Disgust
             probs[:,6] += 0.05 #Angry
@@ -276,7 +283,8 @@ class DemoUtils():
             output = cv2.rectangle(output, (x0, y0), (x1, y1), color_code[emotion], 2)
             x0, y0, x1, y1 = [int(_) for _ in bbox]
             emo_idx = np.argmax(prob)
-            output = cv2.putText(output, emotion+" : "+ str(prob[emo_idx]), (x0-20, y0-5), font, 1, color_code[emotion], 1, cv2.LINE_AA)
+            # output = cv2.putText(output, emotion+" : "+ str(prob[emo_idx]), (x0-20, y0-5), font, 1, color_code[emotion], 1, cv2.LINE_AA)
+            output = cv2.putText(output, emotion, (x0-20, y0-5), font, 1, color_code[emotion], 1, cv2.LINE_AA)
             # output = cv2.putText(output, name, (x0, y1+40), font, 0.7, (255,255,255), 1, cv2.LINE_AA)    
 
         return output
