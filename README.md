@@ -67,10 +67,10 @@
 ![](https://i.imgur.com/4VFhAYN.png)
 
 ## 6. 參考文獻
-[RetinaFace](https://arxiv.org/abs/1905.00641)
-[EfficientNet](https://arxiv.org/abs/1905.11946)
-[First Order Motion](https://papers.nips.cc/paper/2019/file/31c0b36aef265d9221af80872ceb62f9-Paper.pdf)
-[2021 Emotion Paper (ARM)](https://arxiv.org/pdf/2103.10189v1.pdf)
+1. [RetinaFace](https://arxiv.org/abs/1905.00641)
+2. [EfficientNet](https://arxiv.org/abs/1905.11946)
+3. [First Order Motion](https://papers.nips.cc/paper/2019/file/31c0b36aef265d9221af80872ceb62f9-Paper.pdf)
+4. [2021 Emotion Paper (ARM)](https://arxiv.org/pdf/2103.10189v1.pdf)
 
 
 ## 7. 附錄
