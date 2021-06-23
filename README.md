@@ -88,7 +88,7 @@
 
 ## 7. 附錄
 ### 7-1. Colab源碼
-https://github.com/jason90330/EdgeFinal
+https://drive.google.com/file/d/1bfYbxGIDRacFHnfZgQMv9uGwvRXFu-ju/view?usp=sharing
 ### 7-2. 資料集及標註檔
 https://drive.google.com/drive/folders/1zx9qlejfSYX7Z-nvklHb9MfOIxDPpYTA?usp=sharing
 https://drive.google.com/drive/folders/1wfMw_THSLuv-QaKl9vN4rbQem_x0YdAA?usp=sharing
