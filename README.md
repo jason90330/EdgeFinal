@@ -11,7 +11,7 @@
 ### 3-2. 硬體架構
 * 硬體: Kinect
 
-![](https://i.imgur.com/RPkFzAc.png)
+    ![](https://i.imgur.com/RPkFzAc.png)
     ```
     RGB Camera:
         解析度: 1920 * 1080
@@ -46,7 +46,9 @@
 * **Loss criterion:** LabelSmoothSoftmaxCE
 * **Optimizer:** AdamW
 * **Scheduler:** ReduceLROnPlateau
-![](https://i.imgur.com/HZuPRaQ.png)
+* Loss、Accuracy 資訊:
+
+    ![](https://i.imgur.com/HZuPRaQ.png)
 
 ## 4. 實驗結果
 ### 4-1. 測試與比較
