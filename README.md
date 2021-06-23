@@ -1,12 +1,12 @@
 ## 1. 作品名稱: `顏語情`
 
 ## 2. 摘要說明
-搭載 Rgb sensor 以及 Thermal sensor 擷取 Rgb image 以及 Thermal image ，並使用 Retina face detector Crop 出影像臉部區域， 最後訓練一個較小型的 cnn model，如 efficientnet-b0 來預測使用者的情緒。
+搭載 Rgb sensor 以及 Infrared sensor 擷取 Rgb image 以及 Infrared image ，並使用 Retina face detector Crop 出影像臉部區域， 並訓練一個較小型的 cnn model (efficientnet-b0) 來預測使用者的情緒，最後也有採用了 OpenVINO 進行邊緣運算裝置的部署，以達到模型輕量化與低延時的目的。
 
 
 ## 3. 系統簡介
 ### 3-1. 創作發想
-目前業界當中有許多電影公司在試片時都需要記錄使用者的情緒，但是比較可惜的是影片通常都很長，觀眾無法紀錄每一刻的想法以及情緒，最後僅能透過口頭上的解釋對於這部片的想法，但製片商以及導演最需要的仍然是每個畫面是否能夠為觀眾帶來衝擊，因此這個作品的創作出發點也是希望能夠記錄住觀眾每刻的情感狀態，進而達到電影影評分析的目的，另外為了要能夠滿足某些試片場景僅有微弱的光通量，所以這邊我就考慮到可以使用 Thermal camera ，依靠 IR images train 出來的 model 來辨識黑暗中使用者的情緒。
+目前業界當中有許多電影公司在試片時都需要記錄使用者的情緒，但是比較可惜的是影片通常都很長，觀眾無法紀錄每一刻的想法以及情緒，最後僅能透過口頭上的解釋對於這部片的想法，但製片商以及導演最需要的仍然是每個畫面是否能夠為觀眾帶來衝擊，因此這個作品的創作出發點也是希望能夠記錄住觀眾每刻的情感狀態，進而達到電影影評分析的目的，另外為了要能夠滿足某些試片場景僅有微弱的光通量，所以這邊我就考慮到可以使用 Kincect-v2 infrared camera ，依靠 IR images 訓練出來的 model 來辨識黑暗中使用者的情緒。
 
 ### 3-2. 硬體架構
 * 硬體: Kinect
@@ -41,9 +41,9 @@
 
 ### 3-5. 模型選用與訓練
 * **訓練模型:** [EfficientNet](https://arxiv.org/abs/1905.11946)
-* **訓練設定:** Warm up 2000 iterations訓練 30 epochs
+* **訓練設定:** Warm up 2000 iterations 訓練 30 epochs
 * **Loss criterion:** LabelSmoothSoftmaxCE
-* **Optimizer:** AdamW
+* **Optimizer:** AdamW
 * **Scheduler:** ReduceLROnPlateau
 ![](https://i.imgur.com/HZuPRaQ.png)
 
