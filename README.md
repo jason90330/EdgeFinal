@@ -10,6 +10,7 @@
 
 ### 3-2. 硬體架構
 * 硬體: Kinect
+
 ![](https://i.imgur.com/RPkFzAc.png)
     ```
     RGB Camera:
