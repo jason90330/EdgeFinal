@@ -1,4 +1,4 @@
-## 1. 作品名稱: `顏語情`
+## 1. 專案: 基於近紅外線(SWIR)之情緒識別系統
 
 ## 2. 摘要說明
 搭載 Rgb sensor 以及 Infrared sensor 擷取 Rgb image 以及 Infrared image ，並使用 Retina face detector Crop 出影像臉部區域， 並訓練一個較小型的 cnn model (efficientnet-b0) 來預測使用者的情緒，最後也有採用了 OpenVINO 進行邊緣運算裝置的部署，以達到模型輕量化與低延時的目的。
