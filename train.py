@@ -82,9 +82,9 @@ def main():
     ii = 0
 
     best_acc = 0  # 初始化best test accuracy
-    print("Start Training, DeepNetwork!")  # 定义遍历数据集的次数
+    print("Start Training, DeepNetwork!")
 
-    # criterion
+    # criterion: 標準準則 主要用來計算loss
     criterion = LabelSmoothSoftmaxCE()
     # criterion = FocalLoss(outNum = 8, gamma=2, weight = image_datasets['train'].class_sample_count)
     # netOutFeatureNum = net._fc.out_features
@@ -178,7 +178,7 @@ def main():
                 # torch.save(net, 'output/efficientb4_epoch{}.pkl'.format(epoch))
                 # torch.save(head, 'output/efficientb4_head_epoch{}.pkl'.format(epoch))
 
-                # 每训练完一个epoch测试一下准确率
+                # 每訓練完一个 epoch 測試一下準確率
                 print("Waiting Test!")
                 val_sum_loss = 0
                 with torch.no_grad():
@@ -198,7 +198,7 @@ def main():
                         validLossEpNow = val_sum_loss / (j + 1)
                         optimizer.zero_grad()
 
-                        # 取得分最高的那个类 (output.data的索引号)
+                        # 取得分最高的那个類 (output.data的索引)
                         _, predicted = torch.max(output.data, 1)
                         total += target.size(0)
                         correct += (predicted == target).cpu().sum()
@@ -206,7 +206,7 @@ def main():
                     acc = 100. * float(correct) / float(total)
                     scheduler.step(acc)                                     
 
-                    # 将每次测试结果实时写入acc.txt文件中
+                    # 將每次測試結果寫入 acc.txt 文件中
                     if (ii % 1 == 0):
                         print('Saving model......')
                         torch.save(net.state_dict(), '%s/net_%03d.pth' % (cfg.MODEL_PATH, epoch + 1))
@@ -217,7 +217,7 @@ def main():
                     f.flush()
                     validAllLoss.append(validLossEpNow)
                     validAllAcc.append(acc)
-                    # 记录最佳测试分类准确率并写入best_acc.txt文件中
+                    # 記錄最佳測試分類準確率並寫入 best_acc.txt 文件中
                     if acc > best_acc:
                         f3 = open(cfg.MODEL_PATH + cfg.BEST_TXT_PATH, "w")
                         f3.write("EPOCH=%d,best_acc= %.3f%%" % (epoch + 1, acc))

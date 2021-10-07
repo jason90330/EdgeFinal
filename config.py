@@ -23,9 +23,10 @@ FEATURE_EXTRACT = False
 
 # MODEL_PATH = "./model/AFFECTNET"
 # MODEL_PATH = "./model/AFFECTNET_sm_batch"
-# MODEL_PATH = "./model/AFFECTNET_imbalance_10000"
+MODEL_PATH = "./model/AFFECTNET_imbalance_10000"
 # MODEL_PATH = "./model/AFFECTNET_imbalance_15000"
-MODEL_PATH = "./model/AFFECTNET_imbalance_25000"
+# MODEL_PATH = "./model/AFFECTNET_imbalance_25000"
+# MODEL_PATH = "./temp"
 PLOT_PATH = "/output/plot.png"
 ACC_TXT_PATH = "/txt/acc.txt"
 LOG_TXT_PATH = "/txt/log.txt"
