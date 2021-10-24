@@ -17,14 +17,14 @@ class DemoUtils():
     def __init__(self):     
         self.trained_model = './retina_face/mobilenet0.25_Final.pth'
         self.network = 'mobile0.25'
-        cudnn.benchmark = True
+        cudnn.benchmark = False
         torch.set_grad_enabled(False)
         self.confidence_threshold = 0.02
         self.top_k = 5000
         self.nms_threshold = 0.8
         self.keep_top_k = 750
         self.resize = 1   
-        self.cpu = False
+        self.cpu = True
         self.device = torch.device("cpu" if self.cpu else "cuda:0")
         self.AffectName = ['Neutral', 'Happy', 'Sad', 'Surprise', 'Fear', 'Disgust', 'Angry', 'Contempt']
         self.detector = EmotionDetector(fromPath = config.EMOTION_MODEL)

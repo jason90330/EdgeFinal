@@ -13,6 +13,8 @@
 *.tif
 *.TIF
 *.csv
+*.mov
+*.MOV
 
 !test.jpg
 !net_011.pth
